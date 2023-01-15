@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link href="\static\style.css" rel="stylesheet" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moje Konto</title>
+  </head>
+  <body>
+    <header>
+      <img class="header-img" src="\static\img\people.jpg" />
+      <a class="btn hotels-btn" href="home-user.html"> Przeglądaj hotele </a>
+      <div class="drop-down-menu">
+        <button type="submit" class="user-btn" onclick="openMenuPopup()">
+          <img height="34px" src="\static\img\usericon.png" />
+          <p>Witaj, John Bobby!</p>
+        </button>
+        <div class="menu-popup" id="menu-popup">
+          <ul>
+            <li class="menu-items"><a href="my-account.html">Moje Konto</a></li>
+            <li class="menu-items">
+              <a href="my-reservations.html">Moje Rezerwacje</a>
+            </li>
+            <li class="menu-items"><a href="home.html">Wyloguj się</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <!-- EDYCJA DANYCH -->
+    <article>
+      <form class="my-account" method="POST">
+        <div class="popup-title">Moje Konto</div>
+        <div class="email-field popup-field">
+          <label for="email">Adres E-mail</label>
+          <input
+            type="email"
+            class="textfield"
+            id="email"
+            name="email"
+            value="johnbobby@gmail.com"
+          />
+        </div>
+        <div class="password-field popup-field">
+          <label for="password">Hasło</label>
+          <input
+            type="password"
+            class="textfield"
+            id="password"
+            name="password"
+            value="johnbobby"
+          />
+        </div>
+        <div class="first-name-field popup-field">
+          <label for="firstname">Imię</label>
+          <input
+            type="text"
+            class="textfield"
+            id="firstname"
+            name="firstname"
+            value="John"
+          />
+        </div>
+        <div class="last-name-field popup-field">
+          <label for="lastname">Nazwisko</label>
+          <input
+            type="text"
+            class="textfield"
+            id="lastname"
+            name="lastname"
+            value="Bobby"
+          />
+        </div>
+        <div class="birth-date-field popup-field">
+          <label for="birthdate">Data Urodzenia</label>
+          <input
+            type="date"
+            class="textfield"
+            id="birthdate"
+            name="birthdate"
+            value="1980-06-12"
+          />
+        </div>
+        <div class="phonenumber-field popup-field">
+          <label for="phonenumber">Numer Telefonu</label>
+          <input
+            type="text"
+            class="textfield"
+            id="phonenumber"
+            name="phonenumber"
+            value="+7799999999"
+          />
+        </div>
+        <button class="btn save-btn">Zapisz</button>
+      </form>
+    </article>
+
+    <!-- JAKIŚ JS do popup'ów -->
+
+    <script>
+      let menuPopup = document.getElementById("menu-popup");
+      let bookingPopup = document.getElementById("booking-popup");
+
+      function openMenuPopup() {
+        if (!menuPopup.classList.contains("open-menu-popup")) {
+          menuPopup.classList.add("open-menu-popup");
+        } else if (menuPopup.classList.contains("open-menu-popup")) {
+          menuPopup.classList.remove("open-menu-popup");
+        }
+      }
+      function closeSignInPopup() {
+        menuPopup.classList.remove("open-menu-popup");
+      }
+
+      function openBookingPopup() {
+        bookingPopup.classList.add("open-popup");
+        menuPopup.classList.remove("open-popup");
+      }
+
+      function closeBookingPopup() {
+        bookingPopup.classList.remove("open-popup");
+      }
+    </script>
+  </body>
+</html>

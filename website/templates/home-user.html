@@ -5,25 +5,26 @@
     <link href="\static\style.css" rel="stylesheet" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home User</title>
+    <title>Strona Główna</title>
   </head>
   <body>
     <header>
       <img class="header-img" src="\static\img\people.jpg" />
-      <!-- TWORZENIE KONTA, PRZYCISK I POPUP WINDOW Z REJESTRACJĄ -->
      <div class="drop-down-menu">
         <button type="submit" class="user-btn" onclick="openMenuPopup()" >
           <img
           height="34px"
           src="\static\img\usericon.png"
-        /><p>Witaj, John Doe!</p>
+        /><p>Witaj, John Bobby!</p>
           </button>
        <div class="menu-popup" id="menu-popup">
-        <ul>
-          <li class="menu-items"><a href="#">Moje Konto</a></li>
-          <li class="menu-items"><a href="#">Moje Rezerwacje</a></li>
-          <li class="menu-items"><a href="home.html">Wyloguj się</a></li>
-        </ul>
+     <ul>
+       <li class="menu-items"><a href="my-account.html">Moje Konto</a></li>
+       <li class="menu-items">
+         <a href="my-reservations.html">Moje Rezerwacje</a>
+       </li>
+       <li class="menu-items"><a href="home.html">Wyloguj się</a></li>
+          </ul>
          </div>
       </div>
     </header>
