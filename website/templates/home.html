@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="\static\style.css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title%} Home {% endblock %}</title>
+  </head>
+  <body>
+    <header>
+      <img class="header-img" src="\static\img\people.jpg" />
+      <!-- LOGOWANIE, PRZYCISK I POPUP WINDOW Z LOGOWANIEM -->
+      <button type="submit" class="btn sign-in-btn" onclick="openSignInPopup()">
+        Zaloguj się
+      </button>
+      <form class="popup sign-in-popup" action="{{ url_for('views.home') }}" id="sign-in-popup" method="POST">
+        <div type="button" class="close-btn" onclick="closeSignInPopup()">
+          🡰
+        </div>
+        <div class="popup-title">Zaloguj się</div>
+        <div class="email-field popup-field">
+          <label for="email">Adres E-mail</label>
+          <input
+            type="email"
+            class="textfield"
+            id="email"
+            name="Email"
+            placeholder="Wprowadź adres E-mail"
+          />
+        </div>
+        <div class="password-field popup-field">
+          <label for="password">Hasło</label>
+          <input
+            type="password"
+            class="textfield"
+            id="password"
+            name="Password"
+            placeholder="Wprowadź adres hasło"
+          />
+        </div>
+        <button class="btn popup-sign-in-button" name="Log-in">Logowanie</button>
+      </form>
+      <!-- LOGOWANIE, PRZYCISK I POPUP WINDOW Z LOGOWANIEM -->
+      <!-- TWORZENIE KONTA, PRZYCISK I POPUP WINDOW Z REJESTRACJĄ -->
+      <button type="submit" class="btn sign-up-btn" onclick="openSignUpPopup()">
+        Zarejestruj się
+      </button>
+      <form class="popup sign-up-popup" action="{{ url_for('views.home') }}" id="sign-up-popup" method="POST">
+        <div type="button" class="close-btn" onclick="closeSignUpPopup()">
+          🡰
+        </div>
+        <div class="popup-title">Zarejestruj się</div>
+        <div class="email-field popup-field">
+          <label for="email">Adres E-mail</label>
+          <input
+            type="email"
+            class="textfield"
+            id="email"
+            name="Email"
+            placeholder="Wprowadź adres E-mail"
+          />
+        </div>
+        <div class="password-field popup-field">
+          <label for="password">Hasło</label>
+          <input
+            type="password"
+            class="textfield"
+            id="password"
+            name="Password"
+            placeholder="Wprowadź hasło"
+          />
+        </div>
+        <div class="first-name-field popup-field">
+          <label for="firstname">Imię</label>
+          <input
+            type="text"
+            class="textfield"
+            id="firstname"
+            name="FirstName"
+            placeholder="Wprowadź imię"
+          />
+        </div>
+        <div class="last-name-field popup-field">
+          <label for="lastname">Nazwisko</label>
+          <input
+            type="text"
+            class="textfield"
+            id="lastname"
+            name="LastName"
+            placeholder="Wprowadź nazwisko"
+          />
+        </div>
+        <div class="birth-date-field popup-field">
+          <label for="birthdate">Data Urodzenia</label>
+          <input
+            type="date"
+            class="textfield"
+            id="birthdate"
+            name="BirthDate"
+          />
+        </div>
+        <div class="phonenumber-field popup-field">
+          <label for="phonenumber">Numer Telefonu</label>
+          <input
+            type="text"
+            class="textfield"
+            id="phonenumber"
+            name="Phone"
+            placeholder="Wprowadź numer telefonu"
+          />
+        </div>
+        <button class="btn popup-sign-up-button" name="Sign-up">Utwórz Konto</button>
+      </form>
+      <!-- TWORZENIE KONTA, PRZYCISK I POPUP WINDOW Z REJESTRACJĄ -->
+    </header>
+    <!-- OFERTA HOTELI -->
+    <article class="hotels">
+      <!-- HOTEL PROMENADA -->
+      <div class="hotel">
+        <div class="image-container">
+          <img class="hotel-img" src="\static\img\promenada.jpg" />
+        </div>
+        <div class="hotel-info">
+          <h2 class="hotel-name">Promenada</h2>
+          <div class="hotel-address">
+            <p>Gdańsk</p>
+            <p class="address-details">ul.</p>
+            <p class="address-details">Długa</p>
+            <p class="address-details">12</p>
+            <p>80-007</p>
+          </div>
+          <div class="hotel-description">
+            Hotel Promenada ustyuowany jest zaledwie 100 metrów od plaży i 9,5
+            km od Starego Miasta. Goście mają dostęp do całorocznego krytego
+            basenu, siłowni i wanny z hydromasażem. Elegancko urządzone pokoje
+            obejmują część wypoczynkową i wyposażone są w telewizor z płaskim
+            ekranem. W każdym z nich mieści się także łazienka z prysznicem.
+            Obiekt oferuje restaurację specjalizującą się w daniach kuchni
+            polskiej, bar i całodobową recepcję. Dla dzieci przygotowano
+            bezpłatny plac zabaw. Na miejscu można ponadto wypożyczyć kijki do
+            nordic walkingu.
+          </div>
+        </div>
+        <div class="hotel-details">
+          <div class="rating-info">
+            <div>Ocena</div>
+            <div class="star-rating">9</div>
+          </div>
+          <div class="price-info">
+            <p>cena za 1 noc</p>
+            <p class="price">456 PLN</p>
+            <p>zawiera opłaty i podatki</p>
+          </div>
+          <button type="submit" class="booking-btn" onclick="openSignInPopup()">
+            Zarezerwuj
+          </button>
+        </div>
+      </div>
+      <!-- HOTEL PROMENADA - koniec -->
+      <!-- HOTEL BURSZTYN -->
+      <div class="hotel">
+        <div class="image-container">
+          <img class="hotel-img" src="\static\img\bursztyn.jpg" />
+        </div>
+        <div class="hotel-info">
+          <h2 class="hotel-name">Bursztyn</h2>
+          <div class="hotel-address">
+            <p class="">Gdynia</p>
+            <p class="address-details">ul.</p>
+            <p class="address-details">Krótka</p>
+            <p class="address-details">5</p>
+            <p class="">80-209</p>
+          </div>
+          <div class="hotel-description">
+            Hotel Bursztyn, z którego okien roztacza się widok na Zatokę
+            Gdańską, jest usytuowany w cichej i malowniczej okolicy, nieopodal
+            Trójmiejskiego Parku Krajobrazowego i zaledwie 1 km od tętniącego
+            życiem centrum Gdyni. W każdym z pokoi znajduje się zestaw do
+            parzenia kawy i herbaty, telewizor oraz bezpłatny dostęp do
+            Internetu. W hotelu mieści się restauracja oraz bar w holu. Instytut
+            Genesis obejmuje bezpłatną całodobową siłownię, a także dostępne za
+            dodatkową opłatą saunę i wannę z hydromasażem. Przy hotelu znajduje
+            się strefa płatnego parkowania.
+          </div>
+        </div>
+        <div class="hotel-details">
+          <div class="rating-info">
+            <p>Ocena</p>
+            <p class="star-rating">9</p>
+          </div>
+          <div class="price-info">
+            <p>cena za 1 noc</p>
+            <p class="price">511 PLN</p>
+            <p>zawiera opłaty i podatki</p>
+          </div>
+          <button type="submit" class="booking-btn" onclick="openSignInPopup()">
+            Zarezerwuj
+          </button>
+        </div>
+        <!-- HOTEL BURSZTYN - koniec-->
+      </div>
+      <!-- REZERWACJA POKOJU - POPUP WINDOW -->
+      <form class="popup booking-popup" id="booking-popup" method="POST">
+        <div type="button" class="close-btn" onclick="closeBookingPopup()">
+          🡰
+        </div>
+        <div class="arrival-date-field popup-field">
+          <label for="arrivaldate">Data przyjazdu</label>
+          <input
+            type="date"
+            class="textfield"
+            id="arrivaldate"
+            name="arrivaldate"
+          />
+        </div>
+        <div class="leaving-date-field popup-field">
+          <label for="leavingdate">Data wyjazdu</label>
+          <input
+            type="date"
+            class="textfield"
+            id="leavingdate"
+            name="leavingdate"
+          />
+        </div>
+        <div class="booking-email-field popup-field">
+          <label for="email">Adres E-mail</label>
+          <input
+            type="email"
+            class="textfield"
+            id="email"
+            name="email"
+            placeholder="Podaj adres E-mail przypisany do konta"
+          />
+        </div>
+        <div class="popup-field">
+          <label for="room">Typ pokoju</label>
+          <select class="room-choice-list" name="room" id="room">
+            <option value="2">Pokój 2-osobowy</option>
+            <option value="3">Pokój 3-osobowy</option>
+            <option value="4">Pokój 4-osobowy</option>
+          </select>
+        </div>
+        <button class="booking-btn popup-booking-button">Zarezerwuj</button>
+      </form>
+    </article>
+
+    <!-- JAKIŚ JS do popup'ów -->
+
+    <script>
+      let signInPopup = document.getElementById("sign-in-popup");
+      let signUpPopup = document.getElementById("sign-up-popup");
+      let bookingPopup = document.getElementById("booking-popup");
+
+      function openSignInPopup() {
+        signInPopup.classList.add("open-popup");
+        signUpPopup.classList.remove("open-popup");
+      }
+      function closeSignInPopup() {
+        signInPopup.classList.remove("open-popup");
+      }
+
+      function openSignUpPopup() {
+        signUpPopup.classList.add("open-popup");
+        signInPopup.classList.remove("open-popup");
+      }
+
+      function closeSignUpPopup() {
+        signUpPopup.classList.remove("open-popup");
+      }
+
+      function openBookingPopup() {
+        bookingPopup.classList.add("open-popup");
+      }
+
+      function closeBookingPopup() {
+        bookingPopup.classList.remove("open-popup");
+      }
+    </script>
+  </body>
+</html>
