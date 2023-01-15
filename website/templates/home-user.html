@@ -11,7 +11,21 @@
     <header>
       <img class="header-img" src="\static\img\people.jpg" />
       <!-- TWORZENIE KONTA, PRZYCISK I POPUP WINDOW Z REJESTRACJĄ -->
-
+     <div class="drop-down-menu">
+        <button type="submit" class="user-btn" onclick="openMenuPopup()" >
+          <img
+          height="34px"
+          src="\static\img\usericon.png"
+        /><p>Witaj, John Doe!</p>
+          </button>
+       <div class="menu-popup" id="menu-popup">
+        <ul>
+          <li class="menu-items"><a href="#">Moje Konto</a></li>
+          <li class="menu-items"><a href="#">Moje Rezerwacje</a></li>
+          <li class="menu-items"><a href="home.html">Wyloguj się</a></li>
+        </ul>
+         </div>
+      </div>
     </header>
     <!-- OFERTA HOTELI -->
     <article class="hotels">
@@ -151,42 +165,41 @@
         </div>
         <button class="booking-btn popup-booking-button" name="Reserve">Zarezerwuj</button>
       </form>
-      <form  action="{{ url_for('views.logged') }}" id="sign-up-popup" method="POST">
+   <!--   <form  action="{{ url_for('views.logged') }}" id="sign-up-popup" method="POST">
         <button class="btn sign-up-btn"  name="Log-out" > Wyloguj</button>
-      </form>
+      </form> -->
     </article>
 
     <!-- JAKIŚ JS do popup'ów -->
 
     <script>
-      let signInPopup = document.getElementById("sign-in-popup");
-      let signUpPopup = document.getElementById("sign-up-popup");
+      let menuPopup = document.getElementById("menu-popup");
       let bookingPopup = document.getElementById("booking-popup");
 
-      function openSignInPopup() {
-        signInPopup.classList.add("open-popup");
-        signUpPopup.classList.remove("open-popup");
+      function openMenuPopup() {
+        if(!(menuPopup.classList.contains("open-menu-popup")))
+        {
+          menuPopup.classList.add("open-menu-popup");
+        }
+        else if (menuPopup.classList.contains("open-menu-popup"))
+        {
+          menuPopup.classList.remove("open-menu-popup");
+        }
       }
       function closeSignInPopup() {
-        signInPopup.classList.remove("open-popup");
+        menuPopup.classList.remove("open-menu-popup");
       }
 
-      function openSignUpPopup() {
-        signUpPopup.classList.add("open-popup");
-        signInPopup.classList.remove("open-popup");
-      }
-
-      function closeSignUpPopup() {
-        signUpPopup.classList.remove("open-popup");
-      }
 
       function openBookingPopup() {
         bookingPopup.classList.add("open-popup");
+        menuPopup.classList.remove("open-popup");
       }
 
       function closeBookingPopup() {
         bookingPopup.classList.remove("open-popup");
       }
+
     </script>
   </body>
 </html>

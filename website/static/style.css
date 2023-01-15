@@ -17,10 +17,6 @@ body {
 }
 
 /*
-main color: 
-*/
-
-/*
 SIGN IN & SIGN UP BUTTONS
 */
 
@@ -58,6 +54,66 @@ a {
   transition: transform 0.4s;
 }
 
+/* USERS MENU */
+
+.drop-down-menu {
+  position: absolute;
+  min-width: 16%;
+  right: 5%;
+  top: 3%;
+}
+
+.menu-popup{
+  border: 1px solid #dfdbd9;
+  position: absolute;
+  top: 120%;
+  left: 0%;
+  transform: translate(-50%, -50%) scale(0.1);
+  visibility: hidden;
+  transition: transform 0.4s, top 0.4s;
+}
+
+.open-menu-popup{
+  visibility: visible;
+  width: 100%;
+  top: 240%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+
+.user-btn{
+  padding: 3% 6% 3% 6%;
+  width: 100%;
+  background-color: #000;
+  color: #f4f3f2;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6%;
+  cursor: pointer;
+}
+
+.menu-items {
+  text-align: right;
+  background-color: #e6eef3;
+  padding: 10px 10px;
+  list-style: none;
+}
+
+.menu-items a {
+  color: #1d2429;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.menu-items:hover {
+  background-color: #b2cadb;
+  cursor: pointer;
+}
+
 /*
 HOTELS
 */
@@ -87,6 +143,7 @@ IMAGE
 
 .image-container {
   margin-left: 15px;
+  align-self: center;
 }
 
 .hotel-img {
