@@ -228,6 +228,14 @@ DETAILS
   border-radius: 5px;
 }
 
+.check-opinions{
+  font-size: 14px;
+  color: #021b28;
+  text-decoration: underline;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
 .price-info {
   font-size: 14px;
   grid-row: 3/4;
@@ -285,11 +293,11 @@ DETAILS
 }
 
 .sign-in-popup {
-  grid-template-rows: 30px 35px repeat(3, 70px);
+  grid-template-rows: 30px 35px repeat(3, 70px) 40px;
 }
 
 .sign-up-popup {
-  grid-template-rows: 30px 35px repeat(7, 70px);
+  grid-template-rows: 30px 35px repeat(7, 70px) 40px;
 }
 
 .open-popup {
@@ -378,7 +386,7 @@ label {
 }
 
 .booking-popup {
-  grid-template-rows: 35px 30px repeat(5, 70px);
+  grid-template-rows: 35px 30px repeat(5, 70px) 40px;
 }
 
 .arrival-date-field {
@@ -426,7 +434,6 @@ label {
 }
 
 .save-btn {
-  margin-top: 20px;
   align-self: center;
   border-radius: 5px;
   width: 365px;
@@ -448,7 +455,6 @@ label {
 }
 
 .modify-btn {
-  margin-top: 20px;
   align-self: center;
   border-radius: 5px;
   width: 365px;
@@ -494,3 +500,67 @@ label {
   border: 2px solid #021b28;
   text-transform: uppercase;
 }
+
+.rating {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.opinion-field {
+  width: 600px;
+  height: 200px;
+}
+
+.hotel-list {
+  width: 140px;
+  align-self: flex-start;
+}
+
+.rating-list {
+  width: 75px;
+  align-self: flex-start;
+}
+
+.post-btn {
+  margin-top: 20px;
+  align-self: center;
+  border-radius: 5px;
+  width: 200px;
+  align-self: flex-end;
+  margin-top: 0px;
+  margin-right: 8px;
+}
+
+.opinions {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.opinion {
+  display: flex;
+  gap: 10px;
+}
+
+.opinion-text {
+  align-self: flex-end;
+}
+
+.input-error {
+  font-size: 14px;
+  color: #b91c1c;
+  font-weight: 600;
+ /* visibility: hidden; */
+}
+
+.popup-input-error {
+  align-self: flex-end;
+}
+
+.my-account-error {
+  align-self: center;
+}
+.show-input-error {
+  visibility: visible;
+}
+

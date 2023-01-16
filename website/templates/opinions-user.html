@@ -5,27 +5,26 @@
     <link href="\static\style.css" rel="stylesheet" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Strona Główna</title>
+    <title>Opinie</title>
   </head>
   <body>
     <header>
       <img class="header-img" src="\static\img\people.jpg" />
-     <div class="drop-down-menu">
-        <button type="submit" class="user-btn" onclick="openMenuPopup()" >
-          <img
-          height="34px"
-          src="\static\img\usericon.png"
-        /><p>Witaj, John Bobby!</p>
-          </button>
-       <div class="menu-popup" id="menu-popup">
-     <ul>
-       <li class="menu-items"><a href="my-account.html">Moje Konto</a></li>
-       <li class="menu-items">
-         <a href="my-reservations.html">Moje Rezerwacje</a>
-       </li>
-       <li class="menu-items"><a href="home.html">Wyloguj się</a></li>
+       <a class="btn hotels-btn" href="home-user.html"> Przeglądaj hotele </a>
+      <div class="drop-down-menu">
+        <button type="submit" class="user-btn" onclick="openMenuPopup()">
+          <img height="34px" src="\static\img\usericon.png" />
+          <p>Witaj, John Bobby!</p>
+        </button>
+        <div class="menu-popup" id="menu-popup">
+          <ul>
+            <li class="menu-items"><a href="my-account.html">Moje Konto</a></li>
+            <li class="menu-items">
+              <a href="my-reservations.html">Moje Rezerwacje</a>
+            </li>
+            <li class="menu-items"><a href="home.html">Wyloguj się</a></li>
           </ul>
-         </div>
+        </div>
       </div>
     </header>
     <!-- OFERTA HOTELI -->
@@ -36,24 +35,16 @@
           <img class="hotel-img" src="\static\img\promenada.jpg" />
         </div>
         <div class="hotel-info">
-          <h2 class="hotel-name">Promenada</h2>
-          <div class="hotel-address">
-            <p>Gdańsk</p>
-            <p class="address-details">ul.</p>
-            <p class="address-details">Długa</p>
-            <p class="address-details">12</p>
-            <p>80-007</p>
-          </div>
-          <div class="hotel-description">
-            Hotel Promenada ustyuowany jest zaledwie 100 metrów od plaży i 9,5
-            km od Starego Miasta. Goście mają dostęp do całorocznego krytego
-            basenu, siłowni i wanny z hydromasażem. Elegancko urządzone pokoje
-            obejmują część wypoczynkową i wyposażone są w telewizor z płaskim
-            ekranem. W każdym z nich mieści się także łazienka z prysznicem.
-            Obiekt oferuje restaurację specjalizującą się w daniach kuchni
-            polskiej, bar i całodobową recepcję. Dla dzieci przygotowano
-            bezpłatny plac zabaw. Na miejscu można ponadto wypożyczyć kijki do
-            nordic walkingu.
+          <h2 class="hotel-name">Opinie gości hotelu Promenada</h2>
+          <div class="opinions">
+            <div class="opinion">
+              <p class="star-rating">9</p>
+              <p class="opinion-text">Hotel blisko morza, dostępny parking</p>
+            </div>
+            <div class="opinion">
+              <p class="star-rating">9</p>
+              <p class="opinion-text">Hotel blisko morza</p>
+            </div>
           </div>
         </div>
         <div class="hotel-details">
@@ -61,7 +52,6 @@
             <div>Ocena</div>
             <div class="star-rating">9</div>
           </div>
-           <a class="check-opinions" href="opinions-user.html">Zobacz opinie</a>
           <div class="price-info">
             <p>cena za 1 noc</p>
             <p class="price">456 PLN</p>
@@ -83,24 +73,16 @@
           <img class="hotel-img" src="\static\img\bursztyn.jpg" />
         </div>
         <div class="hotel-info">
-          <h2 class="hotel-name">Bursztyn</h2>
-          <div class="hotel-address">
-            <p class="">Gdynia</p>
-            <p class="address-details">ul.</p>
-            <p class="address-details">Krótka</p>
-            <p class="address-details">5</p>
-            <p class="">80-209</p>
-          </div>
-          <div class="hotel-description">
-            Hotel Bursztyn, z którego okien roztacza się widok na Zatokę
-            Gdańską, jest usytuowany w cichej i malowniczej okolicy, nieopodal
-            Trójmiejskiego Parku Krajobrazowego i zaledwie 1 km od tętniącego
-            życiem centrum Gdyni. W każdym z pokoi znajduje się zestaw do
-            parzenia kawy i herbaty, telewizor oraz bezpłatny dostęp do
-            Internetu. W hotelu mieści się restauracja oraz bar w holu. Instytut
-            Genesis obejmuje bezpłatną całodobową siłownię, a także dostępne za
-            dodatkową opłatą saunę i wannę z hydromasażem. Przy hotelu znajduje
-            się strefa płatnego parkowania.
+          <h2 class="hotel-name">Opinie gości hotelu Bursztyn</h2>
+          <div class="opinions">
+            <div class="opinion">
+              <p class="star-rating">9</p>
+              <p class="opinion-text">Dostępny bezpłatny parking, świetne jedzenie</p>
+            </div>
+            <div class="opinion">
+              <p class="star-rating">9</p>
+              <p class="opinion-text">Super jedzenie</p>
+            </div>
           </div>
         </div>
         <div class="hotel-details">
@@ -108,7 +90,6 @@
             <p>Ocena</p>
             <p class="star-rating">9</p>
           </div>
-          <a class="check-opinions" href="opinions-user.html">Zobacz opinie</a>
           <div class="price-info">
             <p>cena za 1 noc</p>
             <p class="price">511 PLN</p>
@@ -123,9 +104,47 @@
           </button>
         </div>
         <!-- HOTEL BURSZTYN - koniec-->
+   <!-- DODAJ OPINIĘ -->
       </div>
+      <form class="rating" method="POST">
+        <div class="popup-title">Dodaj Opinię</div>
+        <label for="hotel">Hotel</label>
+        <select class="room-choice-list hotel-list" name="opinion" id="opinion">
+          <option value="1">Promenada</option>
+          <option value="2">Bursztyn</option>
+        </select>
+          <label for="rating">Ocena</label>
+          <select class="room-choice-list rating-list" name="opinion" id="opinion">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option selected value="10">10</option>
+          </select>
+        <div class="popup-field">
+          <textarea
+            class="textfield opinion-field"
+            id="rating"
+            name="rating">
+            maxlength="1000"
+          </textarea>
+        </div>
+        </div>
+        <button type="submit" class="btn post-btn">Opublikuj</button>
+      </form>
+         <!-- DODAJ OPINIĘ -koniec -->
       <!-- REZERWACJA POKOJU - POPUP WINDOW -->
-      <form class="popup booking-popup" action="{{ url_for('views.logged') }}" id="booking-popup" method="POST">
+      <form
+        class="popup booking-popup"
+        action="{{ url_for('views.logged') }}"
+        id="booking-popup"
+        method="POST"
+      >
         <div type="button" class="close-btn" onclick="closeBookingPopup()">
           🡰
         </div>
@@ -167,12 +186,11 @@
             <option value="4">Pokój 4-osobowy</option>
           </select>
         </div>
-        <p class="input-error popup-input-error">
-          Brak miejsc w wybranym terminie
-        </p>
-        <button class="booking-btn popup-booking-button" name="Reserve">Zarezerwuj</button>
+        <button class="booking-btn popup-booking-button" name="Reserve">
+          Zarezerwuj
+        </button>
       </form>
-   <!--   <form  action="{{ url_for('views.logged') }}" id="sign-up-popup" method="POST">
+      <!--   <form  action="{{ url_for('views.logged') }}" id="sign-up-popup" method="POST">
         <button class="btn sign-up-btn"  name="Log-out" > Wyloguj</button>
       </form> -->
     </article>
@@ -184,19 +202,15 @@
       let bookingPopup = document.getElementById("booking-popup");
 
       function openMenuPopup() {
-        if(!(menuPopup.classList.contains("open-menu-popup")))
-        {
+        if (!menuPopup.classList.contains("open-menu-popup")) {
           menuPopup.classList.add("open-menu-popup");
-        }
-        else if (menuPopup.classList.contains("open-menu-popup"))
-        {
+        } else if (menuPopup.classList.contains("open-menu-popup")) {
           menuPopup.classList.remove("open-menu-popup");
         }
       }
       function closeSignInPopup() {
         menuPopup.classList.remove("open-menu-popup");
       }
-
 
       function openBookingPopup() {
         bookingPopup.classList.add("open-popup");
@@ -206,7 +220,6 @@
       function closeBookingPopup() {
         bookingPopup.classList.remove("open-popup");
       }
-
     </script>
   </body>
 </html>

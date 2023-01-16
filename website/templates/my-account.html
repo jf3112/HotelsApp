@@ -39,6 +39,7 @@
             id="email"
             name="email"
             value="johnbobby@gmail.com"
+            maxlength="30"
           />
         </div>
         <div class="password-field popup-field">
@@ -49,6 +50,7 @@
             id="password"
             name="password"
             value="johnbobby"
+            maxlength="20"
           />
         </div>
         <div class="first-name-field popup-field">
@@ -59,6 +61,7 @@
             id="firstname"
             name="firstname"
             value="John"
+            maxlength="30"
           />
         </div>
         <div class="last-name-field popup-field">
@@ -69,6 +72,7 @@
             id="lastname"
             name="lastname"
             value="Bobby"
+            maxlength="50"
           />
         </div>
         <div class="birth-date-field popup-field">
@@ -89,8 +93,10 @@
             id="phonenumber"
             name="phonenumber"
             value="+7799999999"
+            maxlength="15"
           />
         </div>
+        <p class="input-error my-account-error">Email istnieje już w bazie</p>
         <button class="btn save-btn">Zapisz</button>
       </form>
     </article>
