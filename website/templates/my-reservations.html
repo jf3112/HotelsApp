@@ -14,7 +14,7 @@
       <div class="drop-down-menu">
         <button type="submit" class="user-btn" onclick="openMenuPopup()">
           <img height="34px" src="\static\img\usericon.png" />
-          <p>Witaj, John Bobby!</p>
+          <p>Witaj, {{ dane['FirstName'].capitalize() }} {{ dane['LastName'].capitalize() }}!</p>
         </button>
         <div class="menu-popup" id="menu-popup">
           <ul>

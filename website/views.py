@@ -72,6 +72,7 @@ def home():
                 session['LastName'] = account[4]
                 session['Phone'] = account[5]
                 session['BirthDate'] = account[6]
+                print(session['BirthDate'])
                 emp_position = get_emp_position(session['DataID'])
                 if emp_position is not None:
                     session['Position'] = emp_position['PosName']
@@ -123,8 +124,7 @@ def logged():
                 except Exception as e:
                     error = e
                 pass
-        return render_template("home-user.html", imie=session.get('FirstName', '').capitalize(),
-                               nazwisko=session.get('LastName', '').capitalize())
+        return render_template("home-user.html", dane=session)
     return redirect(url_for('views.home'))
 
 
@@ -144,8 +144,7 @@ def myAccount():
 @views.route('/logged/my-reservations')
 def myReservations():
     if session['Logged']:
-        return render_template("my-reservations.html", imie=session.get('FirstName', '').capitalize(),
-                               nazwisko=session.get('LastName', '').capitalize())
+        return render_template("my-reservations.html", dane=session)
     return redirect(url_for('views.home'))
 
 
@@ -181,8 +180,7 @@ def opinionsN():
                 else:
                     session['Position'] = 'Client'
                 session['Logged'] = True
-                return redirect(url_for('views.logged', imie=session.get('FirstName', '').capitalize(),
-                                        nazwisko=session.get('LastName', '').capitalize()))
+                return redirect(url_for('views.logged'))
             else:
                 flash('Nieprawidłowy email lub hasło', category='error')
                 pass
@@ -204,6 +202,5 @@ def opinionsN():
 @views.route('/logged/opinions-user')
 def opinionsL():
     if session['Logged']:
-        return render_template('opinions-user.html', imie=session.get('FirstName', '').capitalize(),
-                               nazwisko=session.get('LastName', '').capitalize())
+        return render_template('opinions-user.html', dane=session)
     return redirect(url_for('views.opinionsN'))

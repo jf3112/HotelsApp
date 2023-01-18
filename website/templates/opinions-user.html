@@ -14,7 +14,7 @@
       <div class="drop-down-menu">
         <button type="submit" class="user-btn" onclick="openMenuPopup()">
           <img height="34px" src="\static\img\usericon.png" />
-          <p>Witaj, {{ imie }} {{ nazwisko }}!</p>
+          <p>Witaj, {{ dane['FirstName'].capitalize() }} {{ dane['LastName'].capitalize() }}!</p>
         </button>
         <div class="menu-popup" id="menu-popup">
           <ul>
@@ -128,10 +128,11 @@
           </select>
         <div class="popup-field">
           <textarea
+            type="text"
             class="textfield opinion-field"
             id="rating"
-            name="rating">
-            maxlength="1000"
+            name="rating"
+            maxlength="1000">
           </textarea>
         </div>
         </div>
