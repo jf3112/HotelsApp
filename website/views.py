@@ -19,7 +19,9 @@ def get_cursor():
 def get_emp_position(data_id):
     try:
         cursor = get_cursor()
-        cursor.execute('SELECT EP."PosName" FROM "EmpPosition"EP INNER JOIN "Employees"E ON E."EmpPosition" = EP."EmpPosition" INNER JOIN "PersonalData"PD on PD."DataID" = E."DataID" WHERE PD."DataID" = %s;', [data_id])
+        cursor.execute(
+            'SELECT EP."PosName" FROM "EmpPosition"EP INNER JOIN "Employees"E ON E."EmpPosition" = EP."EmpPosition" INNER JOIN "PersonalData"PD on PD."DataID" = E."DataID" WHERE PD."DataID" = %s;',
+            [data_id])
     except Exception as e:
         error = e
     emp_position = cursor.fetchone()
@@ -71,6 +73,9 @@ def home():
                     session['Position'] = 'Client'
                 session['Logged'] = True
                 return redirect(url_for('views.logged'))
+            else:
+                flash('Nieprawidłowy email lub hasło', category='error')
+                pass
         if 'Sign-up' in request.form:
             d = request.form
             try:
@@ -106,3 +111,80 @@ def logged():
         return render_template("home-user.html")
     return redirect(url_for('views.home'))
 
+
+@views.route('/logged/home')
+def logout():
+    session['Logged'] = False
+    return redirect(url_for('views.home'))
+
+
+@views.route('/logged/my-account')
+def myAccount():
+    if session['Logged']:
+        return render_template("my-account.html")
+    return redirect(url_for('views.home'))
+
+
+@views.route('/logged/my-reservations')
+def myReservations():
+    if session['Logged']:
+        return render_template("my-reservations.html")
+    return redirect(url_for('views.home'))
+
+
+@views.route('/logged/home-user')
+def redirectHomeUser():
+    if session['Logged']:
+        return redirect(url_for('views.logged'))
+    return redirect(url_for('views.home'))
+
+
+@views.route('/opinions/', methods=['POST', 'GET'])
+def opinionsN():
+    if request.method == 'POST':
+        if 'Log-in' in request.form:
+            cursor = get_cursor()
+            email = request.form['Email']
+            password = request.form['Password']
+            try:
+                cursor.execute(
+                    'SELECT PD."DataID", PD."Email", PD."Password"'
+                    ' FROM "PersonalData"PD'
+                    ' WHERE PD."Email" = %s AND PD."Password" = %s'
+                    , (email, password))
+            except Exception as e:
+                error = e
+            account = cursor.fetchone()
+            if account:
+                session['DataID'] = account[0]
+                session['Email'] = account[1]
+                emp_position = get_emp_position(session['DataID'])
+                if emp_position is not None:
+                    session['Position'] = emp_position['PosName']
+                else:
+                    session['Position'] = 'Client'
+                session['Logged'] = True
+                return redirect(url_for('views.logged'))
+            else:
+                flash('Nieprawidłowy email lub hasło', category='error')
+                pass
+        if 'Sign-up' in request.form:
+            d = request.form
+            try:
+                cursor = get_cursor()
+                cursor.execute(
+                    'INSERT INTO "PersonalData" ("Email", "Password", "FirstName", "LastName", "Phone", "BirthDate")'
+                    ' VALUES (%s, %s, %s, %s, %s, %s)',
+                    (d['Email'], d['Password'], d['FirstName'], d['LastName'], d['Phone'], d['BirthDate']))
+                conn.commit()
+            except Exception as e:
+                error = e
+            return redirect(url_for('views.logged'))
+    return render_template('opinions.html')
+
+
+@views.route('/logged/opinions-user')
+def opinionsL():
+    if session['Logged']:
+        return render_template('opinions-user.html')
+    return redirect(url_for('views.opinionsN'))

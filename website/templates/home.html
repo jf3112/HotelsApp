@@ -41,12 +41,19 @@
             maxlength="20"
           />
         </div>
-        <p class="input-error popup-input-error">
-          Niepoprawny adres E-mail lub hasło
-        </p>
         <button class="btn popup-sign-in-button" name="Log-in">Logowanie</button>
+
+        {%with messages = get_flashed_messages(with_categories=false)%}
+          {%if messages%}
+            {%for message in messages%}
+              <div class="input-error popup-input-error" role="alert"> {{message}}</div>
+            {%endfor%}
+          {%endif%}
+        {%endwith%}
+
       </form>
       <!-- LOGOWANIE, PRZYCISK I POPUP WINDOW Z LOGOWANIEM -->
+
       <!-- TWORZENIE KONTA, PRZYCISK I POPUP WINDOW Z REJESTRACJĄ -->
       <button type="submit" class="btn sign-up-btn" onclick="openSignUpPopup()">
         Zarejestruj się
@@ -159,7 +166,7 @@
             <div>Ocena</div>
             <div class="star-rating">9</div>
           </div>
-           <a class="check-opinions" href="opinions.html">Zobacz opinie</a>
+           <a class="check-opinions" href="opinions">Zobacz opinie</a>
           <div class="price-info">
             <p>cena za 1 noc</p>
             <p class="price">456 PLN</p>
@@ -202,7 +209,7 @@
             <p>Ocena</p>
             <p class="star-rating">9</p>
           </div>
-           <a class="check-opinions" href="opinions.html">Zobacz opinie</a>
+           <a class="check-opinions" href="opinions">Zobacz opinie</a>
           <div class="price-info">
             <p>cena za 1 noc</p>
             <p class="price">511 PLN</p>

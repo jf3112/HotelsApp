@@ -14,7 +14,7 @@
       <button type="submit" class="btn sign-in-btn" onclick="openSignInPopup()">
         Zaloguj się
       </button>
-      <form class="popup sign-in-popup" id="sign-in-popup" method="POST">
+      <form class="popup sign-in-popup" action="{{ url_for('views.opinionsN') }}" id="sign-in-popup" method="POST">
         <div type="button" class="close-btn" onclick="closeSignInPopup()">
           🡰
         </div>
@@ -25,7 +25,8 @@
             type="email"
             class="textfield"
             id="email"
-            name="email"
+            name="Email"
+            maxlength="30"
             placeholder="Wprowadź adres E-mail"
           />
         </div>
@@ -35,11 +36,12 @@
             type="password"
             class="textfield"
             id="password"
-            name="password"
+            name="Password"
             placeholder="Wprowadź adres hasło"
+            maxlength="20"
           />
         </div>
-        <button class="btn popup-sign-in-button">Logowanie</button>
+        <button class="btn popup-sign-in-button" name="Log-in">Logowanie</button>
       </form>
       <!-- LOGOWANIE, PRZYCISK I POPUP WINDOW Z LOGOWANIEM -->
       <!-- TWORZENIE KONTA, PRZYCISK I POPUP WINDOW Z REJESTRACJĄ -->
