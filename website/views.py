@@ -1,6 +1,7 @@
 from flask import *
 import psycopg2
 from psycopg2.extras import Json
+from datetime import date
 
 DB_HOST = "hotelserver.postgres.database.azure.com"
 DB_NAME = "hoteldbms"
@@ -56,7 +57,7 @@ def home():
             password = request.form['Password']
             try:
                 cursor.execute(
-                    'SELECT PD."DataID", PD."Email", PD."Password"'
+                    'SELECT PD."DataID", PD."Email", PD."Password", PD."FirstName" , PD."LastName", PD."Phone", PD."BirthDate"'
                     ' FROM "PersonalData"PD'
                     ' WHERE PD."Email" = %s AND PD."Password" = %s'
                     , (email, password))
@@ -66,6 +67,11 @@ def home():
             if account:
                 session['DataID'] = account[0]
                 session['Email'] = account[1]
+                session['Password'] = account[2]
+                session['FirstName'] = account[3]
+                session['LastName'] = account[4]
+                session['Phone'] = account[5]
+                session['BirthDate'] = account[6]
                 emp_position = get_emp_position(session['DataID'])
                 if emp_position is not None:
                     session['Position'] = emp_position['PosName']
@@ -74,7 +80,7 @@ def home():
                 session['Logged'] = True
                 return redirect(url_for('views.logged'))
             else:
-                flash('Nieprawidłowy email lub hasło', category='error')
+                error = 'Nieprawidłowy adres email lub hasło'
                 pass
         if 'Sign-up' in request.form:
             d = request.form
@@ -84,6 +90,15 @@ def home():
                     'INSERT INTO "PersonalData" ("Email", "Password", "FirstName", "LastName", "Phone", "BirthDate")'
                     ' VALUES (%s, %s, %s, %s, %s, %s)',
                     (d['Email'], d['Password'], d['FirstName'], d['LastName'], d['Phone'], d['BirthDate']))
+                conn.commit()
+            except Exception as e:
+                error = e
+            try:
+                cursor = get_cursor()
+                cursor.execute(
+                    'INSERT INTO "Clients" ("JoinDate", "DataID")'
+                    ' VALUES (%s, %s)',
+                    (date.today(), session['DataID']))
                 conn.commit()
             except Exception as e:
                 error = e
@@ -108,7 +123,8 @@ def logged():
                 except Exception as e:
                     error = e
                 pass
-        return render_template("home-user.html")
+        return render_template("home-user.html", imie=session.get('FirstName', '').capitalize(),
+                               nazwisko=session.get('LastName', '').capitalize())
     return redirect(url_for('views.home'))
 
 
@@ -121,14 +137,15 @@ def logout():
 @views.route('/logged/my-account')
 def myAccount():
     if session['Logged']:
-        return render_template("my-account.html")
+        return render_template("my-account.html", dane=session)
     return redirect(url_for('views.home'))
 
 
 @views.route('/logged/my-reservations')
 def myReservations():
     if session['Logged']:
-        return render_template("my-reservations.html")
+        return render_template("my-reservations.html", imie=session.get('FirstName', '').capitalize(),
+                               nazwisko=session.get('LastName', '').capitalize())
     return redirect(url_for('views.home'))
 
 
@@ -164,7 +181,8 @@ def opinionsN():
                 else:
                     session['Position'] = 'Client'
                 session['Logged'] = True
-                return redirect(url_for('views.logged'))
+                return redirect(url_for('views.logged', imie=session.get('FirstName', '').capitalize(),
+                                        nazwisko=session.get('LastName', '').capitalize()))
             else:
                 flash('Nieprawidłowy email lub hasło', category='error')
                 pass
@@ -186,5 +204,6 @@ def opinionsN():
 @views.route('/logged/opinions-user')
 def opinionsL():
     if session['Logged']:
-        return render_template('opinions-user.html')
+        return render_template('opinions-user.html', imie=session.get('FirstName', '').capitalize(),
+                               nazwisko=session.get('LastName', '').capitalize())
     return redirect(url_for('views.opinionsN'))

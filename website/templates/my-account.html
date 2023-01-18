@@ -14,7 +14,7 @@
       <div class="drop-down-menu">
         <button type="submit" class="user-btn" onclick="openMenuPopup()">
           <img height="34px" src="\static\img\usericon.png" />
-          <p>Witaj, John Bobby!</p>
+          <p>Witaj, {{ dane['FirstName'].capitalize() }} {{ dane['LastName'].capitalize() }}!</p>
         </button>
         <div class="menu-popup" id="menu-popup">
           <ul>
@@ -38,7 +38,7 @@
             class="textfield"
             id="email"
             name="email"
-            value="johnbobby@gmail.com"
+            value={{ dane['Email'] }}
             maxlength="30"
           />
         </div>
@@ -49,7 +49,7 @@
             class="textfield"
             id="password"
             name="password"
-            value="johnbobby"
+            value={{ dane['Password'] }}
             maxlength="20"
           />
         </div>
@@ -60,7 +60,7 @@
             class="textfield"
             id="firstname"
             name="firstname"
-            value="John"
+            value={{ dane['FirstName'] }}
             maxlength="30"
           />
         </div>
@@ -71,7 +71,7 @@
             class="textfield"
             id="lastname"
             name="lastname"
-            value="Bobby"
+            value={{ dane['LastName'] }}
             maxlength="50"
           />
         </div>
@@ -82,7 +82,7 @@
             class="textfield"
             id="birthdate"
             name="birthdate"
-            value="1980-06-12"
+            value={{ dane['BirthDate'] }}
           />
         </div>
         <div class="phonenumber-field popup-field">
@@ -92,7 +92,7 @@
             class="textfield"
             id="phonenumber"
             name="phonenumber"
-            value="+7799999999"
+            value={{ dane['Phone'] }}
             maxlength="15"
           />
         </div>
