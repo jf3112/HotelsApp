@@ -46,7 +46,7 @@
         {%with messages = get_flashed_messages(with_categories=false)%}
           {%if messages%}
             {%for message in messages%}
-              <div class="input-error popup-input-error" role="alert"> {{message}}</div>
+              <div class="input-error popup-input-error" role="alert">{{ message }}</div>
             {%endfor%}
           {%endif%}
         {%endwith%}
@@ -127,8 +127,17 @@
             maxlength="15"
           />
         </div>
-        <p class="input-error popup-input-error">Email istnieje już w bazie</p>
+
         <button class="btn popup-sign-up-button" name="Sign-up">Utwórz Konto</button>
+
+        {%with messages = get_flashed_messages(with_categories=false)%}
+          {%if messages%}
+            {%for message in messages%}
+              <div class="input-error popup-input-error" role="alert">{{ message }}</div>
+            {%endfor%}
+          {%endif%}
+        {%endwith%}
+
       </form>
       <!-- TWORZENIE KONTA, PRZYCISK I POPUP WINDOW Z REJESTRACJĄ -->
     </header>

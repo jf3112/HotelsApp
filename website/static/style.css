@@ -54,7 +54,7 @@ a {
   min-width: 12%;
   text-align: center;
   padding: 15px 20px;
-  border-radius: 0px;
+  border-radius: 10px;
   border: 2px solid #021b28;
 }
 
@@ -92,15 +92,17 @@ a {
   transform: translate(-50%, -50%) scale(1);
 }
 
+
 .user-btn {
   padding: 3% 6% 3% 6%;
   width: 100%;
-  background-color: #000;
+  background-color: #021b28;
   color: #f4f3f2;
   font-size: 16px;
   font-weight: bold;
   display: flex;
   align-items: center;
+  border-radius: 10px;
   justify-content: flex-start;
   gap: 6%;
   cursor: pointer;

@@ -72,7 +72,6 @@ def home():
                 session['LastName'] = account[4]
                 session['Phone'] = account[5]
                 session['BirthDate'] = account[6]
-                print(session['BirthDate'])
                 emp_position = get_emp_position(session['DataID'])
                 if emp_position is not None:
                     session['Position'] = emp_position['PosName']
@@ -81,29 +80,33 @@ def home():
                 session['Logged'] = True
                 return redirect(url_for('views.logged'))
             else:
-                error = 'Nieprawidłowy adres email lub hasło'
-                pass
+                flash('Nieprawidłowy adres email lub hasło')
         if 'Sign-up' in request.form:
             d = request.form
-            try:
+            cursor = get_cursor()
+            temp = None
+            cursor.execute('SELECT * FROM "PersonalData"PD WHERE PD."Email" = %s', (d['Email'],))
+            temp = cursor.fetchone()
+            if temp is None:
                 cursor = get_cursor()
                 cursor.execute(
                     'INSERT INTO "PersonalData" ("Email", "Password", "FirstName", "LastName", "Phone", "BirthDate")'
                     ' VALUES (%s, %s, %s, %s, %s, %s)',
                     (d['Email'], d['Password'], d['FirstName'], d['LastName'], d['Phone'], d['BirthDate']))
                 conn.commit()
-            except Exception as e:
-                error = e
-            try:
+                cursor = get_cursor()
+                cursor.execute('SELECT "DataID" FROM "PersonalData" WHERE "Email" = %s', (d['Email'],))
+                temp2 = cursor.fetchone()
                 cursor = get_cursor()
                 cursor.execute(
                     'INSERT INTO "Clients" ("JoinDate", "DataID")'
                     ' VALUES (%s, %s)',
-                    (date.today(), session['DataID']))
+                    (date.today(), temp2[0],))
                 conn.commit()
-            except Exception as e:
-                error = e
-            return redirect(url_for('views.logged'))
+                session['Logged'] = True
+                return redirect(url_for('views.logged'))
+            else:
+                flash('Adres email jest zajęty')
     return render_template("home.html")
 
 
@@ -124,6 +127,7 @@ def logged():
                 except Exception as e:
                     error = e
                 pass
+
         return render_template("home-user.html", dane=session)
     return redirect(url_for('views.home'))
 
