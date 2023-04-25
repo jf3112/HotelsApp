@@ -5,16 +5,11 @@
     <link href="\static\style.css" rel="stylesheet" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<<<<<<< HEAD
     <title>Strona Główna</title>
-=======
-    <title>Home User</title>
->>>>>>> 374d1e9 (initial commit)
   </head>
   <body>
     <header>
       <img class="header-img" src="\static\img\people.jpg" />
-<<<<<<< HEAD
      <div class="drop-down-menu">
         <button type="submit" class="user-btn" onclick="openMenuPopup()" >
           <img
@@ -32,10 +27,6 @@
           </ul>
          </div>
       </div>
-=======
-      <!-- TWORZENIE KONTA, PRZYCISK I POPUP WINDOW Z REJESTRACJĄ -->
-
->>>>>>> 374d1e9 (initial commit)
     </header>
     <!-- OFERTA HOTELI -->
     <article class="hotels">
@@ -70,10 +61,7 @@
             <div>Ocena</div>
             <div class="star-rating">9</div>
           </div>
-<<<<<<< HEAD
            <a class="check-opinions" href="opinions-user">Zobacz opinie</a>
-=======
->>>>>>> 374d1e9 (initial commit)
           <div class="price-info">
             <p>cena za 1 noc</p>
             <p class="price">456 PLN</p>
@@ -120,10 +108,7 @@
             <p>Ocena</p>
             <p class="star-rating">9</p>
           </div>
-<<<<<<< HEAD
           <a class="check-opinions" href="opinions-user">Zobacz opinie</a>
-=======
->>>>>>> 374d1e9 (initial commit)
           <div class="price-info">
             <p>cena za 1 noc</p>
             <p class="price">511 PLN</p>
@@ -171,10 +156,7 @@
             id="email"
             name="email"
             placeholder="Podaj adres E-mail przypisany do konta"
-<<<<<<< HEAD
             maxlength="30"
-=======
->>>>>>> 374d1e9 (initial commit)
           />
         </div>
         <div class="popup-field">
@@ -187,21 +169,14 @@
         </div>
         <button class="booking-btn popup-booking-button" name="Reserve">Zarezerwuj</button>
       </form>
-<<<<<<< HEAD
    <!--   <form  action="{{ url_for('views.logged') }}" id="sign-up-popup" method="POST">
         <button class="btn sign-up-btn"  name="Log-out" > Wyloguj</button>
       </form> -->
-=======
-      <form  action="{{ url_for('views.logged') }}" id="sign-up-popup" method="POST">
-        <button class="btn sign-up-btn"  name="Log-out" > Wyloguj</button>
-      </form>
->>>>>>> 374d1e9 (initial commit)
     </article>
 
     <!-- JAKIŚ JS do popup'ów -->
 
     <script>
-<<<<<<< HEAD
       let menuPopup = document.getElementById("menu-popup");
       let bookingPopup = document.getElementById("booking-popup");
 
@@ -223,40 +198,12 @@
       function openBookingPopup() {
         bookingPopup.classList.add("open-popup");
         menuPopup.classList.remove("open-popup");
-=======
-      let signInPopup = document.getElementById("sign-in-popup");
-      let signUpPopup = document.getElementById("sign-up-popup");
-      let bookingPopup = document.getElementById("booking-popup");
-
-      function openSignInPopup() {
-        signInPopup.classList.add("open-popup");
-        signUpPopup.classList.remove("open-popup");
-      }
-      function closeSignInPopup() {
-        signInPopup.classList.remove("open-popup");
-      }
-
-      function openSignUpPopup() {
-        signUpPopup.classList.add("open-popup");
-        signInPopup.classList.remove("open-popup");
-      }
-
-      function closeSignUpPopup() {
-        signUpPopup.classList.remove("open-popup");
-      }
-
-      function openBookingPopup() {
-        bookingPopup.classList.add("open-popup");
->>>>>>> 374d1e9 (initial commit)
       }
 
       function closeBookingPopup() {
         bookingPopup.classList.remove("open-popup");
       }
-<<<<<<< HEAD
 
-=======
->>>>>>> 374d1e9 (initial commit)
     </script>
   </body>
 </html>
