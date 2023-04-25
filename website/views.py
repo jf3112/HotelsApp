@@ -104,7 +104,7 @@ def home():
                     (date.today(), temp2[0],))
                 conn.commit()
                 session['Logged'] = True
-                return redirect(url_for('views.logged'))
+                return  redirect(url_for('views.logged'))
             else:
                 flash('Adres email jest zajęty')
     return render_template("home.html")
