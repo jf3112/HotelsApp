@@ -1,5 +1,5 @@
 # Hotels App
-"Hotels App is a web-based database application created as part of a student course Database 2. Its purpose is to manage customer data for a hotel network. This app uses Flask web application framework. SQL database system was written in PostgreSQL and is deployed on Azure.
+Hotels App is a web-based database application created as part of a student course Database 2. Its purpose is to manage customer data for a hotel network. This app uses Flask web application framework. SQL database system was written in PostgreSQL and is deployed on Azure.
 
 Not logged user features:
 - register as a client or login in to a client account
