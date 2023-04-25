@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link href="\static\style.css" rel="stylesheet" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moje Rezerwacje</title>
+  </head>
+  <body>
+    <header>
+      <img class="header-img" src="\static\img\people.jpg" />
+      <a class="btn hotels-btn" href="home-user.html"> Przeglądaj hotele </a>
+      <div class="drop-down-menu">
+        <button type="submit" class="user-btn" onclick="openMenuPopup()">
+          <img height="34px" src="\static\img\usericon.png" />
+          <p>Witaj, John Bobby!</p>
+        </button>
+        <div class="menu-popup" id="menu-popup">
+          <ul>
+            <li class="menu-items"><a href="my-account.html">Moje Konto</a></li>
+            <li class="menu-items">
+              <a href="my-reservations.html">Moje Rezerwacje</a>
+            </li>
+            <li class="menu-items"><a href="home.html">Wyloguj się</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <!-- REZERWACJA -->
+    <article class="no-reservations">
+      <h2 class="hotel-name">Brak Rezerwacji</h2>
+      <a class="btn book-now-btn" href="home-user.html"> Zarezerwuj </a>
+    </article>
+
+    <!-- JAKIŚ JS do popup'ów -->
+
+    <script>
+      let menuPopup = document.getElementById("menu-popup");
+      let bookingPopup = document.getElementById("booking-popup");
+
+      function openMenuPopup() {
+        if (!menuPopup.classList.contains("open-menu-popup")) {
+          menuPopup.classList.add("open-menu-popup");
+        } else if (menuPopup.classList.contains("open-menu-popup")) {
+          menuPopup.classList.remove("open-menu-popup");
+        }
+      }
+      function closeSignInPopup() {
+        menuPopup.classList.remove("open-menu-popup");
+      }
+
+      function openBookingPopup() {
+        bookingPopup.classList.add("open-popup");
+        menuPopup.classList.remove("open-popup");
+      }
+
+      function closeBookingPopup() {
+        bookingPopup.classList.remove("open-popup");
+      }
+    </script>
+  </body>
+</html>

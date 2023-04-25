@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link href="\static\style.css" rel="stylesheet" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Opinie</title>
+  </head>
+  <body>
+    <header>
+      <img class="header-img" src="\static\img\people.jpg" />
+      <!-- LOGOWANIE, PRZYCISK I POPUP WINDOW Z LOGOWANIEM -->
+      <button type="submit" class="btn sign-in-btn" onclick="openSignInPopup()">
+        Zaloguj się
+      </button>
+      <form class="popup sign-in-popup" action="{{ url_for('views.opinionsN') }}" id="sign-in-popup" method="POST">
+        <div type="button" class="close-btn" onclick="closeSignInPopup()">
+          🡰
+        </div>
+        <div class="popup-title">Zaloguj się</div>
+        <div class="email-field popup-field">
+          <label for="email">Adres E-mail</label>
+          <input
+            type="email"
+            class="textfield"
+            id="email"
+            name="Email"
+            maxlength="30"
+            placeholder="Wprowadź adres E-mail"
+          />
+        </div>
+        <div class="password-field popup-field">
+          <label for="password">Hasło</label>
+          <input
+            type="password"
+            class="textfield"
+            id="password"
+            name="Password"
+            placeholder="Wprowadź adres hasło"
+            maxlength="20"
+          />
+        </div>
+        <button class="btn popup-sign-in-button" name="Log-in">Logowanie</button>
+      </form>
+      <!-- LOGOWANIE, PRZYCISK I POPUP WINDOW Z LOGOWANIEM -->
+      <!-- TWORZENIE KONTA, PRZYCISK I POPUP WINDOW Z REJESTRACJĄ -->
+      <button type="submit" class="btn sign-up-btn" onclick="openSignUpPopup()">
+        Zarejestruj się
+      </button>
+      <form class="popup sign-up-popup" id="sign-up-popup" method="POST">
+        <div type="button" class="close-btn" onclick="closeSignUpPopup()">
+          🡰
+        </div>
+        <div class="popup-title">Zarejestruj się</div>
+        <div class="email-field popup-field">
+          <label for="email">Adres E-mail</label>
+          <input
+            type="email"
+            class="textfield"
+            id="email"
+            name="email"
+            placeholder="Wprowadź adres E-mail"
+          />
+        </div>
+        <div class="password-field popup-field">
+          <label for="password">Hasło</label>
+          <input
+            type="password"
+            class="textfield"
+            id="password"
+            name="password"
+            placeholder="Wprowadź hasło"
+          />
+        </div>
+        <div class="first-name-field popup-field">
+          <label for="firstname">Imię</label>
+          <input
+            type="text"
+            class="textfield"
+            id="firstname"
+            name="firstname"
+            placeholder="Wprowadź imię"
+          />
+        </div>
+        <div class="last-name-field popup-field">
+          <label for="lastname">Nazwisko</label>
+          <input
+            type="text"
+            class="textfield"
+            id="lastname"
+            name="lastname"
+            placeholder="Wprowadź nazwisko"
+          />
+        </div>
+        <div class="birth-date-field popup-field">
+          <label for="birthdate">Data Urodzenia</label>
+          <input
+            type="date"
+            class="textfield"
+            id="birthdate"
+            name="birthdate"
+          />
+        </div>
+        <div class="phonenumber-field popup-field">
+          <label for="phonenumber">Numer Telefonu</label>
+          <input
+            type="number"
+            class="textfield"
+            id="phonenumber"
+            name="phonenumber"
+            placeholder="Wprowadź numer telefonu"
+          />
+        </div>
+        <button class="btn popup-sign-up-button">Utwórz Konto</button>
+      </form>
+      <!-- TWORZENIE KONTA, PRZYCISK I POPUP WINDOW Z REJESTRACJĄ -->
+    </header>
+    <!-- OFERTA HOTELI -->
+    <article class="hotels">
+      <!-- HOTEL PROMENADA -->
+      <div class="hotel">
+        <div class="image-container">
+          <img class="hotel-img" src="\static\img\promenada.jpg" />
+        </div>
+        <div class="hotel-info">
+          <h2 class="hotel-name">Opinie gości hotelu Promenada</h2>
+          <div class="opinions">
+            <div class="opinion">
+              <p class="star-rating">9</p>
+              <p class="opinion-text">Hotel blisko morza, dostępny parking</p>
+            </div>
+            <div class="opinion">
+              <p class="star-rating">9</p>
+              <p class="opinion-text">Hotel blisko morza</p>
+            </div>
+          </div>
+        </div>
+        <div class="hotel-details">
+          <div class="rating-info">
+            <div>Ocena</div>
+            <div class="star-rating">9</div>
+          </div>
+          <div class="price-info">
+            <p>cena za 1 noc</p>
+            <p class="price">456 PLN</p>
+            <p>zawiera opłaty i podatki</p>
+          </div>
+          <button
+            type="submit"
+            class="booking-btn"
+            onclick="openSignInPopup()"
+          >
+            Zarezerwuj
+          </button>
+        </div>
+      </div>
+      <!-- HOTEL PROMENADA - koniec -->
+      <!-- HOTEL BURSZTYN -->
+      <div class="hotel">
+        <div class="image-container">
+          <img class="hotel-img" src="\static\img\bursztyn.jpg" />
+        </div>
+        <div class="hotel-info">
+          <h2 class="hotel-name">Opinie gości hotelu Bursztyn</h2>
+          <div class="opinions">
+            <div class="opinion">
+              <p class="star-rating">9</p>
+              <p class="opinion-text">Dostępny bezpłatny parking, świetne jedzenie</p>
+            </div>
+            <div class="opinion">
+              <p class="star-rating">9</p>
+              <p class="opinion-text">Super jedzenie</p>
+            </div>
+          </div>
+        </div>
+        <div class="hotel-details">
+          <div class="rating-info">
+            <p>Ocena</p>
+            <p class="star-rating">9</p>
+          </div>
+          <div class="price-info">
+            <p>cena za 1 noc</p>
+            <p class="price">511 PLN</p>
+            <p>zawiera opłaty i podatki</p>
+          </div>
+          <button
+            type="submit"
+            class="booking-btn"
+            onclick="openSignInPopup()"
+          >
+            Zarezerwuj
+          </button>
+        </div>
+        </div>
+        <!-- HOTEL BURSZTYN - koniec-->
+    </article>
+
+    <!-- JAKIŚ JS do popup'ów -->
+
+    <script>
+ let signInPopup = document.getElementById("sign-in-popup");
+      let signUpPopup = document.getElementById("sign-up-popup");
+
+      function openSignInPopup() {
+        signInPopup.classList.add("open-popup");
+        signUpPopup.classList.remove("open-popup");
+      }
+      function closeSignInPopup() {
+        signInPopup.classList.remove("open-popup");
+      }
+
+      function openSignUpPopup() {
+        signUpPopup.classList.add("open-popup");
+        signInPopup.classList.remove("open-popup");
+      }
+
+      function closeSignUpPopup() {
+        signUpPopup.classList.remove("open-popup");
+      }
+
+    </script>
+  </body>
+</html>

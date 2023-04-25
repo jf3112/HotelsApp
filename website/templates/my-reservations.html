@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link href="\static\style.css" rel="stylesheet" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moje Rezerwacje</title>
+  </head>
+  <body>
+    <header>
+      <img class="header-img" src="\static\img\people.jpg" />
+      <a class="btn hotels-btn" href="home-user"> Przeglądaj hotele </a>
+      <div class="drop-down-menu">
+        <button type="submit" class="user-btn" onclick="openMenuPopup()">
+          <img height="34px" src="\static\img\usericon.png" />
+          <p>Witaj, {{ dane['FirstName'].capitalize() }} {{ dane['LastName'].capitalize() }}!</p>
+        </button>
+        <div class="menu-popup" id="menu-popup">
+          <ul>
+            <li class="menu-items"><a href="my-account">Moje Konto</a></li>
+            <li class="menu-items">
+              <a href="my-reservations">Moje Rezerwacje</a>
+            </li>
+            <li class="menu-items"><a href="home">Wyloguj się</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <!-- REZERWACJA -->
+    <article class="hotels">
+      <!-- HOTEL PROMENADA -->
+      <div class="hotel booking-hotel">
+        <div class="image-container">
+          <img
+            class="hotel-img booking-img"
+            src="\static\img\promenada.jpg"
+          />
+        </div>
+        <div class="booking-info">
+          <h2 class="hotel-name">Twoja rezerwacja w hotelu Promenada</h2>
+          <div class="hotel-address">
+            <p>Gdańsk</p>
+            <p class="address-details">ul.</p>
+            <p class="address-details">Długa</p>
+            <p class="address-details">12</p>
+            <p>80-007</p>
+          </div>
+          <form class="booking-details">
+            <div class="arrival-date-field popup-field">
+              <label for="arrivaldate">Data przyjazdu</label>
+              <input
+                type="date"
+                class="textfield"
+                id="arrivaldate"
+                name="arrivaldate"
+                value="2006-06-06"
+              />
+            </div>
+            <div class="leaving-date-field popup-field">
+              <label for="leavingdate">Data wyjazdu</label>
+              <input
+                type="date"
+                class="textfield"
+                id="leavingdate"
+                name="leavingdate"
+                value="2006-06-20"
+              />
+            </div>
+
+            <div class="popup-field">
+              <label for="room">Typ pokoju</label>
+              <select class="room-choice-list" name="room" id="room">
+                <option value="2">Pokój 2-osobowy</option>
+                <option selected value="3">Pokój 3-osobowy</option>
+                <option value="4">Pokój 4-osobowy</option>
+              </select>
+            </div>
+            <button class="booking-btn modify-btn" name="Reserve">
+              Modyfikuj Rezerwację
+            </button>
+          </form>
+        </div>
+        <div class="booking-options">
+          <button type="submit" class="booking-btn my-booking-btn">
+            Anuluj Rezerwację
+          </button>
+          <button type="submit" class="booking-btn my-booking-btn">
+            Oceń Swój Pobyt
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <!-- JAKIŚ JS do popup'ów -->
+
+    <script>
+      let menuPopup = document.getElementById("menu-popup");
+      let bookingPopup = document.getElementById("booking-popup");
+
+      function openMenuPopup() {
+        if (!menuPopup.classList.contains("open-menu-popup")) {
+          menuPopup.classList.add("open-menu-popup");
+        } else if (menuPopup.classList.contains("open-menu-popup")) {
+          menuPopup.classList.remove("open-menu-popup");
+        }
+      }
+      function closeSignInPopup() {
+        menuPopup.classList.remove("open-menu-popup");
+      }
+
+      function openBookingPopup() {
+        bookingPopup.classList.add("open-popup");
+        menuPopup.classList.remove("open-popup");
+      }
+
+      function closeBookingPopup() {
+        bookingPopup.classList.remove("open-popup");
+      }
+    </script>
+  </body>
+</html>
