@@ -1,7 +1,10 @@
 from flask import *
 import psycopg2
 from psycopg2.extras import Json
+<<<<<<< HEAD
 from datetime import date
+=======
+>>>>>>> 374d1e9 (initial commit)
 
 DB_HOST = "hotelserver.postgres.database.azure.com"
 DB_NAME = "hoteldbms"
@@ -20,9 +23,13 @@ def get_cursor():
 def get_emp_position(data_id):
     try:
         cursor = get_cursor()
+<<<<<<< HEAD
         cursor.execute(
             'SELECT EP."PosName" FROM "EmpPosition"EP INNER JOIN "Employees"E ON E."EmpPosition" = EP."EmpPosition" INNER JOIN "PersonalData"PD on PD."DataID" = E."DataID" WHERE PD."DataID" = %s;',
             [data_id])
+=======
+        cursor.execute('SELECT EP."PosName" FROM "EmpPosition"EP INNER JOIN "Employees"E ON E."EmpPosition" = EP."EmpPosition" INNER JOIN "PersonalData"PD on PD."DataID" = E."DataID" WHERE PD."DataID" = %s;', [data_id])
+>>>>>>> 374d1e9 (initial commit)
     except Exception as e:
         error = e
     emp_position = cursor.fetchone()
@@ -57,7 +64,11 @@ def home():
             password = request.form['Password']
             try:
                 cursor.execute(
+<<<<<<< HEAD
                     'SELECT PD."DataID", PD."Email", PD."Password", PD."FirstName" , PD."LastName", PD."Phone", PD."BirthDate"'
+=======
+                    'SELECT PD."DataID", PD."Email", PD."Password"'
+>>>>>>> 374d1e9 (initial commit)
                     ' FROM "PersonalData"PD'
                     ' WHERE PD."Email" = %s AND PD."Password" = %s'
                     , (email, password))
@@ -67,11 +78,14 @@ def home():
             if account:
                 session['DataID'] = account[0]
                 session['Email'] = account[1]
+<<<<<<< HEAD
                 session['Password'] = account[2]
                 session['FirstName'] = account[3]
                 session['LastName'] = account[4]
                 session['Phone'] = account[5]
                 session['BirthDate'] = account[6]
+=======
+>>>>>>> 374d1e9 (initial commit)
                 emp_position = get_emp_position(session['DataID'])
                 if emp_position is not None:
                     session['Position'] = emp_position['PosName']
@@ -79,6 +93,7 @@ def home():
                     session['Position'] = 'Client'
                 session['Logged'] = True
                 return redirect(url_for('views.logged'))
+<<<<<<< HEAD
             else:
                 flash('Nieprawidłowy adres email lub hasło')
         if 'Sign-up' in request.form:
@@ -88,12 +103,18 @@ def home():
             cursor.execute('SELECT * FROM "PersonalData"PD WHERE PD."Email" = %s', (d['Email'],))
             temp = cursor.fetchone()
             if temp is None:
+=======
+        if 'Sign-up' in request.form:
+            d = request.form
+            try:
+>>>>>>> 374d1e9 (initial commit)
                 cursor = get_cursor()
                 cursor.execute(
                     'INSERT INTO "PersonalData" ("Email", "Password", "FirstName", "LastName", "Phone", "BirthDate")'
                     ' VALUES (%s, %s, %s, %s, %s, %s)',
                     (d['Email'], d['Password'], d['FirstName'], d['LastName'], d['Phone'], d['BirthDate']))
                 conn.commit()
+<<<<<<< HEAD
                 cursor = get_cursor()
                 cursor.execute('SELECT "DataID" FROM "PersonalData" WHERE "Email" = %s', (d['Email'],))
                 temp2 = cursor.fetchone()
@@ -107,6 +128,11 @@ def home():
                 return  redirect(url_for('views.logged'))
             else:
                 flash('Adres email jest zajęty')
+=======
+            except Exception as e:
+                error = e
+            return redirect(url_for('views.logged'))
+>>>>>>> 374d1e9 (initial commit)
     return render_template("home.html")
 
 
@@ -127,6 +153,7 @@ def logged():
                 except Exception as e:
                     error = e
                 pass
+<<<<<<< HEAD
 
         return render_template("home-user.html", dane=session)
     return redirect(url_for('views.home'))
@@ -208,3 +235,8 @@ def opinionsL():
     if session['Logged']:
         return render_template('opinions-user.html', dane=session)
     return redirect(url_for('views.opinionsN'))
+=======
+        return render_template("home-user.html")
+    return redirect(url_for('views.home'))
+
+>>>>>>> 374d1e9 (initial commit)
